@@ -1,0 +1,10 @@
+.App {
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+
+  &__Error {
+    font-size: .8em;
+    animation: Error .5s ease;
+  }
+}

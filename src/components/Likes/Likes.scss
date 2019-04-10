@@ -1,0 +1,36 @@
+.Likes {
+  color: #d75a4a;
+  font-weight: 700;
+
+  &__Heart {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    path {
+      stroke: #d75a4a;
+      fill: transparent;
+      stroke-width: 3px;
+    }
+
+    &.liked {
+      path {
+        fill: #d75a4a;
+      }
+    }
+
+  }
+
+  &__Count {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+  }
+
+}
