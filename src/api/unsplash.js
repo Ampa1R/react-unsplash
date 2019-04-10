@@ -19,7 +19,6 @@ const unsplash = new Unsplash(settings);
 
 export default unsplash;
 
-
 export const goAuth = async () => {
   const authenticationUrl = await unsplash.auth.getAuthenticationUrl([
     "public",
@@ -27,5 +26,3 @@ export const goAuth = async () => {
   ]);
   location.assign(authenticationUrl);
 }
-
-// and getAuthUrl() ...

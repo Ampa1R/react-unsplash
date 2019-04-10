@@ -6,5 +6,5 @@ Built with React, Router, Redux, Thunk.
 - [x] Real-time feed
 - [x] Detail view of photo
 - [x] Auth via unsplash
-- [ ] Infinite scrolling
-- [ ] Likes
+- [x] Infinite scrolling
+- [x] Likes

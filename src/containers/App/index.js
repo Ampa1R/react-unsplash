@@ -20,14 +20,16 @@ import './App.scss';
 
 // TODO: autoload items on scroll
 
-// TODO: refactor to -- if user wants to like show popup with login button
+// TODO: loading spinner
 
-// TODO: login popup
+// TODO: error toast
+
+// TODO: handle errors from api
 
 class App extends Component {
   componentDidMount() {
     console.log('mounted');
-    // this.props.fetchFeed();
+    this.props.fetchFeed();
     window.addEventListener('scroll', this.handleScroll);
   }
   componentWillUnmount() {
@@ -35,8 +37,11 @@ class App extends Component {
   }
   handleScroll = () => {
     const more = (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
-    if(more) console.log(more);
-    // TODO: on more===true fetchFeed()
+    if(more) {
+      console.log('at the bottom');
+      this.props.fetchFeed();
+      /// TODO: isLoading
+    }
   }
   handleLike = (id, liked) => {
     if(this.props.logged) {
@@ -48,6 +53,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        {
+          // TODO: LOADING
+        }
         <Route exact path="/" render={ (routeProps) => <Feed {...routeProps} feed={this.props.feed} onLike={this.handleLike} /> } />
         <Route path="/auth" render={
           routeProps => this.props.logged
