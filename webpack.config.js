@@ -33,7 +33,7 @@ module.exports = {
   },
   devServer: {
     allowedHosts: [
-      'myjs.tk'
+      'js-unsplash.herokuapp.com'
     ],
     historyApiFallback: true,
   }

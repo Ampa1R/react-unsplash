@@ -16,15 +16,11 @@ import { fetchFeed, likePhoto, unlikePhoto, authByCode, showPopup, hidePopup } f
 
 import './App.scss';
 
-// TODO: authStatus component to display current auth status
-
-// TODO: autoload items on scroll
+// TODO: authStatus component to display current auth status and log out
 
 // TODO: loading spinner
 
 // TODO: error toast
-
-// TODO: handle errors from api
 
 class App extends Component {
   componentDidMount() {
@@ -40,7 +36,7 @@ class App extends Component {
     if(more) {
       console.log('at the bottom');
       this.props.fetchFeed();
-      /// TODO: isLoading
+      // TODO: isLoading
     }
   }
   handleLike = (id, liked) => {

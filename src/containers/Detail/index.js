@@ -8,8 +8,6 @@ function Detail( { item, onLike } ) {
 
   const created = new Date(item.created_at);
 
-  const handleLike = () => onLike(item.id);
-
   return (
     <div className="Detail">
       <Link to="/" className="Detail__Back">
@@ -19,7 +17,7 @@ function Detail( { item, onLike } ) {
       <div className="DetailCard">
         <div className="DetailCard__Desc">
           <div className="DetailCard__Likes">
-            <Likes likes={item.likes} likedByUser={item.liked_by_user} onLike={() => handleLike(item.id, item.liked_by_user)} />
+            <Likes likes={item.likes} likedByUser={item.liked_by_user} onLike={() => onLike(item.id, item.liked_by_user)} />
           </div>
           <div className="DetailCard__Author">
             by&nbsp;

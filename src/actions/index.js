@@ -1,7 +1,7 @@
 import unsplash from '../api/unsplash';
 
 export const FETCH_FEED_START = 'FETCH_FEED_START';
-export const FETCH_FEED_RESULT = 'FETCH_FEED_RESULT'; // TODO: replace with something else
+export const FETCH_FEED_RESULT = 'FETCH_FEED_RESULT';
 export const LOG_IN = 'LOG_IN';
 export const SHOW_POPUP = 'SHOW_POPUP';
 export const HIDE_POPUP = 'HIDE_POPUP';

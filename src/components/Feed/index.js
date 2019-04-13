@@ -18,6 +18,9 @@ function Feed(props) {
             onLike={props.onLike}
           />
       )}
+      <div className="Feed__Loading">
+        Loading...
+      </div>
     </div>
   );
 }
