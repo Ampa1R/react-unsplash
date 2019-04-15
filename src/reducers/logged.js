@@ -10,6 +10,6 @@ const logged = (state = isLogged, action) => {
     default:
       return state;
   }
-}
+};
 
 export default logged;

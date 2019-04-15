@@ -1,16 +1,14 @@
-import React, { useEffect, Component } from 'react';
-import Unsplash from 'unsplash-js';
+import React, { Component } from 'react';
 import { Route, withRouter, Redirect, Link } from "react-router-dom";
 
 import { connect } from 'react-redux';
-import { fetchPhotos } from '../../actions';
 
 import Feed from '../../components/Feed';
 import Auth from '../../components/Auth';
 import Popup from '../../components/Popup';
 import Detail from '../Detail';
 
-import unsplash, { goAuth } from '../../api/unsplash';
+import { goAuth } from '../../api/unsplash';
 
 import { fetchFeed, likePhoto, unlikePhoto, authByCode, showPopup, hidePopup } from '../../actions';
 
@@ -18,9 +16,9 @@ import './App.scss';
 
 // TODO: authStatus component to display current auth status and log out
 
-// TODO: loading spinner
-
 // TODO: error toast
+
+// TODO: fix direct urls
 
 class App extends Component {
   componentDidMount() {
@@ -32,27 +30,23 @@ class App extends Component {
     window.removeEventListener('scroll', this.handleScroll);
   }
   handleScroll = () => {
-    const more = (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
+    const more = (window.innerHeight + 200 + window.scrollY) >= document.body.offsetHeight;
     if(more) {
       console.log('at the bottom');
       this.props.fetchFeed();
-      // TODO: isLoading
     }
-  }
+  };
   handleLike = (id, liked) => {
     if(this.props.logged) {
       if(liked) this.props.unlikePhoto(id);
       else this.props.likePhoto(id);
     }
     else this.props.showPopup();
-  }
+  };
   render() {
     return (
       <div className="App">
-        {
-          // TODO: LOADING
-        }
-        <Route exact path="/" render={ (routeProps) => <Feed {...routeProps} feed={this.props.feed} onLike={this.handleLike} /> } />
+        <Route exact path="/" render={ (routeProps) => <Feed {...routeProps} feed={this.props.feed.items} onLike={this.handleLike} isLoading={this.props.feed.isLoading} /> } />
         <Route path="/auth" render={
           routeProps => this.props.logged
                           ? (<Redirect to="/" />)
@@ -60,7 +54,7 @@ class App extends Component {
         } />
         <Route path="/:id" render={
             (routeProps) => {
-              const detailItem = this.props.feed.filter( photo => photo.id === routeProps.match.params.id ).pop();
+              const detailItem = this.props.feed.items.filter( photo => photo.id === routeProps.match.params.id ).pop();
               if(detailItem)
                 return <Detail {...routeProps} item={detailItem} onLike={this.handleLike} />
               else return <Redirect to="/" />;
@@ -78,8 +72,13 @@ class App extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  console.log('state');
+  console.log(state);
+  console.log('ownProps');
+  console.log(ownProps);
+
   return state;
-}
+};
 
 const mapDispatchToState = dispatch => {
   return {
@@ -90,7 +89,7 @@ const mapDispatchToState = dispatch => {
     showPopup: () => dispatch(showPopup()),
     hidePopup: () => dispatch(hidePopup())
   }
-}
+};
 
 App = withRouter(connect(mapStateToProps, mapDispatchToState)(App));
 

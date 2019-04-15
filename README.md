@@ -1,6 +1,6 @@
 # Unsplash client
 App for viewing Unsplash feed using API.
-Built with React, Router, Redux, Thunk.
+Built using react, react-router, react-redux, redux-thunk, unsplash-js.
 
 ## Features:
 - [x] Real-time feed

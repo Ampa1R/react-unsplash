@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FeedItem from '../FeedItem';
+import Loader from '../../components/Loader';
 import './Feed.scss';
 
 function Feed(props) {
@@ -18,15 +19,19 @@ function Feed(props) {
             onLike={props.onLike}
           />
       )}
-      <div className="Feed__Loading">
-        Loading...
-      </div>
+      {
+        props.isLoading &&
+        <div className="Feed__Loading">
+          <Loader />
+        </div>
+      }
     </div>
   );
 }
 
 Feed.propTypes = {
-  feed: PropTypes.array.isRequired
+  feed: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired
 };
 
 export default Feed;
