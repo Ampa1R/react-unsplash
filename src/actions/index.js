@@ -15,7 +15,6 @@ export const fetchFeed = () => {
     dispatch({type: FETCH_FEED_START});
     const res = await unsplash.photos.listPhotos(page++, 10, "latest");
     const feed = await res.json();
-    console.log(feed);
     if(feed.errors) {
       console.error("can't get feed!");
       console.log(feed.errors);
@@ -29,9 +28,7 @@ export const likePhoto = id => {
 
     const res = await unsplash.photos.likePhoto(id);
     const result = await res.json();
-    console.log(result);
     if(result.errors) {
-      // TODO: handle errors
       console.error("can't like photo!");
       console.log(result.errors);
     }
@@ -43,9 +40,9 @@ export const unlikePhoto = id => {
 
     const res = await unsplash.photos.unlikePhoto(id);
     const result = await res.json();
-    console.log(result);
     if(result.errors) {
-      // TODO: handle errors
+      console.error("can't unlike photo!");
+      console.log(result.errors);
     }
     else dispatch({type: DISLIKE_PHOTO, payload: id});
   }
@@ -61,7 +58,6 @@ export const authByCode = code => {
       dispatch({type: LOG_IN});
     }
     else {
-      // TODO: handle error
       console.error("can't log in!");
       console.log(result);
     }

@@ -14,15 +14,8 @@ import { fetchFeed, likePhoto, unlikePhoto, authByCode, showPopup, hidePopup } f
 
 import './App.scss';
 
-// TODO: authStatus component to display current auth status and log out
-
-// TODO: error toast
-
-// TODO: fix direct urls
-
 class App extends Component {
   componentDidMount() {
-    console.log('mounted');
     this.props.fetchFeed();
     window.addEventListener('scroll', this.handleScroll);
   }
@@ -31,10 +24,7 @@ class App extends Component {
   }
   handleScroll = () => {
     const more = (window.innerHeight + 200 + window.scrollY) >= document.body.offsetHeight;
-    if(more) {
-      console.log('at the bottom');
-      this.props.fetchFeed();
-    }
+    if(more && !this.props.feed.isLoading) this.props.fetchFeed();
   };
   handleLike = (id, liked) => {
     if(this.props.logged) {
@@ -71,14 +61,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  console.log('state');
-  console.log(state);
-  console.log('ownProps');
-  console.log(ownProps);
-
-  return state;
-};
+const mapStateToProps = (state, ownProps) => state;
 
 const mapDispatchToState = dispatch => {
   return {

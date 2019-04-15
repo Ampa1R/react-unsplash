@@ -3,15 +3,6 @@ import PropTypes from 'prop-types';
 import './Popup.scss';
 
 export default function Popup(props) {
-  let bar = 0;
-  const ok = (e) => {
-    console.log(e.preventDefault());
-    e.returnValue = false;
-  }
-  useEffect(() => {
-    window.addEventListener('scroll', ok);
-    return () => window.removeEventListener('scroll', ok);
-  }, []);
   return (
     <div className="PopupWrapper">
       <div className="Popup">

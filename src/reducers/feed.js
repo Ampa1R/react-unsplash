@@ -1,13 +1,11 @@
-const localPhotos = JSON.parse(localStorage.getItem('photos'));
 const initialState = {
   isLoading: false,
-  items: localPhotos || []
+  items: []
 };
 
 import { FETCH_FEED_START, FETCH_FEED_RESULT, LIKE_PHOTO, DISLIKE_PHOTO } from '../actions';
 
 const feed = (state = initialState, action) => {
-  console.log(`action -- ${action.type}`);
   switch(action.type) {
     case FETCH_FEED_START:
       return {
